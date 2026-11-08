@@ -7,17 +7,18 @@ from dotenv import load_dotenv
 import os
 
 from tools.log import show_logs
-
+from tools.gmail import read_gmail
 
 load_dotenv()
 
-tools = [show_logs]
+#add tools here
+tools = [show_logs, read_gmail]
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 print("Found api key!")
 
 provider = GoogleProvider(api_key=GEMINI_API_KEY)
-model = GoogleModel('gemini-3.5-flash-lite', provider=provider)
+model = GoogleModel('gemini-3.1-flash-lite', provider=provider)
 
 
 response_agent = Agent(
